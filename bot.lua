@@ -186,7 +186,7 @@ function tdcli_update_callback(data)
 			local matches
 			find_link(text)
 			if is_naji(msg) then
-				if text:match("^(add admin) (%d+)$") then
+				if text:match("^(افزودن مدیر) (%d+)$") then
 					local matches = text:match("%d+")
 					if redis:sismember('botBOT-IDadmin', matches) then
 						return send(msg.chat_id_, msg.id_, "<i>کاربر مورد نظر در حال حاضر مدیر است.</i>")
@@ -197,7 +197,7 @@ function tdcli_update_callback(data)
 						redis:sadd('botBOT-IDmod', matches)
 						return send(msg.chat_id_, msg.id_, "<i>مقام کاربر به مدیر ارتقا یافت</i>")
 					end
-				elseif text:match("^(add sudo) (%d+)$") then
+				elseif text:match("^(افزودن مدیرکل) (%d+)$") then
 					local matches = text:match("%d+")
 					if redis:sismember('botBOT-IDmod',msg.sender_user_id_) then
 						return send(msg.chat_id_, msg.id_, "شما دسترسی ندارید.")
